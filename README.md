@@ -1,6 +1,6 @@
 # Video-Streaming-Platform
 
-## Cloning the Reppository
+## Cloning the Repository
 On your local computer, navigate to the directory where you want to clone the repository.
 
 To clone the repository, run the following command:
