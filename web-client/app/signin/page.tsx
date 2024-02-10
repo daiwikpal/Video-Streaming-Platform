@@ -2,29 +2,28 @@
 
 import { useState } from 'react';
 
-import styles from './SignInPage.module.css'; // Assuming you're using CSS modules for styling
+import styles from './SignInPage.module.css'; 
 
 
 export default function Signin(){
     const [formMode, setFormMode] = useState('login'); // 'login' or 'signup'
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState(''); // For signup form
+    const [confirmPassword, setConfirmPassword] = useState(''); 
    
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
         if (formMode === 'signup') {
-            // Implement your sign-up logic here.
+            // Implement  sign-up logic here.
             // Make sure to include validation, for example, check if the passwords match.
             console.log('Signing up with', email, password, confirmPassword);
             // Assume signup is successful and switch to login mode or directly log the user in
         } else {
-            // Implement your sign-in logic here.
+            // Implement  sign-in logic here.
             console.log('Signing in with', email, password);
-            // For demonstration purposes, let's assume the login is always successful
-             // Redirect to home page after login
+            // Redirect to home page after login
         }
     };
 
