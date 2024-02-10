@@ -1,0 +1,23 @@
+.navBar {
+    text-align: center;
+    background: #f0f0f0;
+    padding: 10px 0;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navItem a {
+    text-decoration: none;
+    color: #333;
+}
+
+.navItem a:hover {
+    color: #0070f3;
+}
