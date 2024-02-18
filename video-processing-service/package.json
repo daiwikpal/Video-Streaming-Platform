@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "audioExtraction": "ts-node src/extractingAudio.ts",
-    "videoProcessing": "ts-node src/resolutionProcessing.ts.ts",
+    "videoProcessing": "ts-node src/resolutionProcessing.ts",
     "imageExtraction": "ts-node src/extractingImages.ts",
     "build": "tsc",
     "serve": "node dist/index.js"

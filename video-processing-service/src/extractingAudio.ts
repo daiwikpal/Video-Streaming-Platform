@@ -1,9 +1,8 @@
-const ffmpegStatic = require('ffmpeg-static');
-const ffmpeg = require('fluent-ffmpeg');
-const path = require('path');
+import ffmpegStatic from "ffmpeg-static"; 
+import ffmpeg from "fluent-ffmpeg";
 
 // Tell fluent-ffmpeg where it can find FFmpeg
-ffmpeg.setFfmpegPath(ffmpegStatic);
+ffmpeg.setFfmpegPath(ffmpegStatic as string);
 
 // function to extract audio from video given the path
 function extractAudio(inputVidPath: string, outputFilePath: string) {
