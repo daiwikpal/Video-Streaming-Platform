@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import styles from './SignInPage.module.css'; 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app } from '../firebase/firebase';
+import { getDatabase, ref, set } from 'firebase/database';
 
 
 export default function Signin(){
@@ -16,16 +18,32 @@ export default function Signin(){
         event.preventDefault();
 
         if (formMode === 'signup') {
-            // Implement  sign-up logic here.
-            // Make sure to include validation, for example, check if the passwords match.
-            const auth = getAuth();
+            
+            let initApp = app;
+            const auth = getAuth(initApp);
+            const database = getDatabase(initApp);
+
             createUserWithEmailAndPassword(auth,email,password)
             .then(userCredential => {
+                // declare user variable
                 const user = userCredential.user;
+                // add user to firebase database
+                var database_ref = ref(database, 'users/' + user.uid);
+                // creating user data
+                var user_data = {
+                    email : email,
+                    last_login : Date.now()
+                }
+
+                set(database_ref,user_data);
+
+                alert("User Created!");
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+
+                alert(errorMessage);
             });
 
             console.log('Signing up with', email, password, confirmPassword);
