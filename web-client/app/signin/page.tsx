@@ -53,19 +53,21 @@ export default function Signin(){
             console.log('Signing up with', email, password, confirmPassword);
             // Assume signup is successful and switch to login mode or directly log the user in
         } else {
-            // Implement  sign-in logic here.
+            // Implement sign-in logic here.
             let initApp = app;
             const auth = getAuth(initApp);
             try {
             const userCredential = await signInWithEmailAndPassword(auth,email,password);
             // signed in
+            alert("user successfully logged in")
             const user = userCredential.user;
             console.log('Signed in as', user.email);
             } catch (error) {
+                alert("user not logged in")
                 console.error('Error signing in with email and password');
             }
             console.log('Signing in with', email, password);
-            // Redirect to home page after login
+            // redirect to home page after sign in
         }
     };
 
