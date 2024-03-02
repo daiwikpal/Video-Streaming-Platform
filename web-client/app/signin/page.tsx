@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from 'react';
-import styles from './SignInPage.module.css'; 
+import styles from './SignInPage.module.css';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from '../firebase/firebase';
+import { getDatabase, ref, set } from 'firebase/database';
 
 
 export default function Signin(){
@@ -21,6 +24,16 @@ export default function Signin(){
             // Assume signup is successful and switch to login mode or directly log the user in
         } else {
             // Implement  sign-in logic here.
+            let initApp = app;
+            const auth = getAuth(initApp);
+            try {
+            const userCredential = await signInWithEmailAndPassword(auth,email,password);
+            // signed in
+            const user = userCredential.user;
+            console.log('Signed in as', user.email);
+            } catch (error) {
+                console.error('Error signing in with email and password');
+            }
             console.log('Signing in with', email, password);
             // Redirect to home page after login
         }
