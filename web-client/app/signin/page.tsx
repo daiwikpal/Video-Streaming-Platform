@@ -37,7 +37,6 @@ export default function Signin(){
                         }
 
                         set(database_ref,user_data);
-
                         alert("User Created!");
                     })
                     .catch((error) => {
