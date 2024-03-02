@@ -11,7 +11,9 @@ export default function Signin(){
     const [formMode, setFormMode] = useState('login'); // 'login' or 'signup'
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState(''); 
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [username, setUsername] = useState(''); 
+    const [dateOfBirth, setDOB] = useState(''); 
    
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
@@ -33,6 +35,8 @@ export default function Signin(){
                         // creating user data
                         var user_data = {
                             email : email,
+                            username : username,
+                            dateOfBirth : dateOfBirth,
                             last_login : Date.now()
                         }
 
@@ -78,6 +82,32 @@ export default function Signin(){
                         required
                     />
                 </div>
+                {formMode === 'signup' && (
+                    <div className={styles.formGroup}>
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            type="username"
+                            id="username"
+                            name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
+                )}
+                {formMode === 'signup' && (
+                    <div className={styles.formGroup}>
+                        <label htmlFor="dateOfBirth">Date of Birth:</label>
+                        <input
+                            type="dateOfBirth"
+                            id="dateOfBirth"
+                            name="dateOfBirth"
+                            value={dateOfBirth}
+                            onChange={(e) => setDOB(e.target.value)}
+                            required
+                        />
+                    </div>
+                )}
                 <div className={styles.formGroup}>
                     <label htmlFor="password">Password:</label>
                     <input
