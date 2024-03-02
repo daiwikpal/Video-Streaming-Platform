@@ -18,8 +18,38 @@ export default function Signin(){
         event.preventDefault();
 
         if (formMode === 'signup') {
-            // Implement  sign-up logic here.
-            // Make sure to include validation, for example, check if the passwords match.
+            
+            let initApp = app;
+            const auth = getAuth(initApp);
+            const database = getDatabase(initApp);
+
+            if (password == confirmPassword) {
+                createUserWithEmailAndPassword(auth,email,password)
+                    .then(userCredential => {
+                        // declare user variable
+                        const user = userCredential.user;
+                        // add user to firebase database
+                        var database_ref = ref(database, 'users/' + user.uid);
+                        // creating user data
+                        var user_data = {
+                            email : email,
+                            last_login : Date.now()
+                        }
+
+                        set(database_ref,user_data);
+                        alert("User Created!");
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+
+                        alert(errorMessage);
+                    });
+            }
+            else {
+                alert("Passwords do not match.");
+            }
+
             console.log('Signing up with', email, password, confirmPassword);
             // Assume signup is successful and switch to login mode or directly log the user in
         } else {
