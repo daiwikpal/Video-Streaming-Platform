@@ -41,7 +41,7 @@ app.post("/processVideos", (req, res) => {
   // The callback that is run when FFmpeg is finished
   .on('end', () => {
       console.log('FFmpeg has finished.');
-      res.status(200).send("Process finished successfully")      
+      res.status(200).send("Process finished successfully");
   })  
 
   // The callback that is run when FFmpeg encountered an error
