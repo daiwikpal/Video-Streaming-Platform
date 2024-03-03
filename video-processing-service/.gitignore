@@ -1,1 +1,20 @@
 node_modules
+# Ignore common video file formats
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mkv
+
+# Ignore common image file formats
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+
+# Except sampleVideo.mp4
+!sampleVideo.mp4

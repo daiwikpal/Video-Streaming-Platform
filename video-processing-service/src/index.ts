@@ -3,17 +3,19 @@ import ffmpegStatic from "ffmpeg-static";
 import ffmpeg from "fluent-ffmpeg";
 
 const app = express(); 
+app.use(express.json());
 
-app.get("/", (req, res)=>{  
+app.get("/status", (req, res)=>{  
   const port = process.env.PORT || 3001; 
   res.status(200).send(`Video Process Running on port: ${port}`); 
 }); 
 
 
 app.post("/processVideos", (req, res) => {
-
+  ffmpeg.setFfmpegPath(ffmpegStatic as string);
   const inputPath = req.body.inputFilePath; 
   const outputPath = req.body.outputFilePath; 
+  console.log(inputPath, outputPath);
 
   if(!inputPath || !outputPath){
     res.status(400).send("Bad Request: Missing File Path"); 
@@ -27,11 +29,10 @@ app.post("/processVideos", (req, res) => {
   // Scale the video to 720 pixels in height. The -2 means FFmpeg should figure out the
   // exact size of the other dimension. In other words, to make the video 720 pixels wide
   // and make FFmpeg calculate its height, use scale=720:-2 instead.
-  .outputOptions('-vf', 'scale=-1:360')
+  .outputOptions('-vf', 'scale=-1:360', '-c:a', 'copy')
 
   // Output file
-  .saveToFile(outputPath)
-
+  .saveToFile(outputPath) 
   // Log the percentage of work completed
   .on('progress', (progress: { percent: number; }) => {
       if (progress.percent) {
