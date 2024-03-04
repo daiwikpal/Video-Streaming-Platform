@@ -80,7 +80,11 @@ export default function Signin(){
     };
 
     return (
+        
         <div className={styles.signInContainer}>
+            <div className={styles.description}>
+            <h2 className={styles.formTitle}>{formMode === 'login' ? 'Sign into your Account' : 'Create a New Account'}</h2>
+            </div>
             <form onSubmit={handleSubmit} className={styles.signInForm}>
                 <div className={styles.formGroup}>
                     <label htmlFor="email">Email:</label>
@@ -110,7 +114,7 @@ export default function Signin(){
                     <div className={styles.formGroup}>
                         <label htmlFor="dateOfBirth">Date of Birth:</label>
                         <input
-                            type="dateOfBirth"
+                            type="date"
                             id="dateOfBirth"
                             name="dateOfBirth"
                             value={dateOfBirth}

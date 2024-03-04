@@ -1,13 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+
 .signInContainer {
     max-width: 400px;
-    margin: auto;
+    margin: 5vh auto;
     padding: 20px;
+    background-color: #ddd762;
+    background-image: linear-gradient(to right top, #d3ccb4, rgb(146, 142, 72));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 8px;
 }
 
 .signInForm {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .formGroup {
@@ -16,18 +24,26 @@
 }
 
 .formGroup label {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
 }
 
 .formGroup input {
-    padding: 8px;
+    padding: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: border-color 0.3s;
+}   
+
+.formGroup input:focus {
+    border-color: #4b4004;
+    outline: none;
 }
 
 .signInButton {
-    background-color: #0070f3;
+    background-color: #A69A71;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -37,5 +53,55 @@
 }
 
 .signInButton:hover {
-    background-color: #0056b3;
+    background-color: #726436;
+}
+
+.toggleFormModeButton {
+    background: none;
+    border: none;
+    color: blue;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.toggleFormModeButton:hover {
+    color: darkblue;
+}
+
+.formTitle {
+    font-size: 24px; 
+    margin-bottom: -10px; 
+    color: #333; 
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.formGroup input:focus, .signInButton:focus, .toggleFormModeButton:focus {
+    outline: none;
+}
+
+.signInButton:hover, .toggleFormModeButton:hover {
+    box-shadow: inset 4px 4px 10px #cbced1, inset -4px -4px 10px white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.signInContainer {
+    animation: fadeIn 1s ease-out;
+}
+
+.signInButton:hover, .toggleFormModeButton:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.description {
+    margin-bottom: 20px;
 }
