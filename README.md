@@ -20,6 +20,8 @@ Navigate to the `web-client` directory and run the following:
 ```
 npm run dev 
 ```
+npm i lucide-react
+npm i class-variance-authority tailwind-merge
 
 This will run the Next.js app on a local server on port 3000. 
 
