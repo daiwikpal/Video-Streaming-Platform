@@ -12,9 +12,15 @@ export default function Signin(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [username, setUsername] = useState(''); 
-    const [dateOfBirth, setDOB] = useState(''); 
-   
+    const [dateOfBirth, setDOB] = useState('');
+    
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+        setConfirmPasswordVisible(!confirmPasswordVisible);
+    };
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -126,19 +132,27 @@ export default function Signin(){
                 <div className={styles.formGroup}>
                     <label htmlFor="password">Password:</label>
                     <input
-                        type="password"
+                        type={passwordVisible ? "text" : "password"}
                         id="password"
                         name="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={passwordVisible}
+                            onChange={togglePasswordVisibility}
+                        /> Show Password
+                    </label>
+                                        
                 </div>
                 {formMode === 'signup' && (
                     <div className={styles.formGroup}>
                         <label htmlFor="confirmPassword">Confirm Password:</label>
                         <input
-                            type="password"
+                            type={confirmPasswordVisible ? "text" : "password"}
                             id="confirmPassword"
                             name="confirmPassword"
                             value={confirmPassword}
