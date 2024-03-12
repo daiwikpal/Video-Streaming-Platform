@@ -18,3 +18,6 @@ node_modules
 
 # Except sampleVideo.mp4
 !sampleVideo.mp4
+
+# mac
+.DS_Store
