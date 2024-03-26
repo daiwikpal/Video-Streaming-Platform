@@ -22,7 +22,10 @@ export default function Watch() {
           </div>
 
           <div className="addComment">
-            <div className="commentInputField">{}</div>
+            <div className="commentInputField">
+              {/* Textarea for adding comments */}
+              <textarea className="commentInput" placeholder="Add a comment..."></textarea>
+            </div>
             <div className="commentButtonFrame">
               <button className="commentButton">Comment</button>
             </div>

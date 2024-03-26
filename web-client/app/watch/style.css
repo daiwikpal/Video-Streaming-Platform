@@ -123,12 +123,16 @@
   }
   
   .commentInputField {
-    width: 85%;
-    margin-right: 15px; 
-    height: 50px;
-    border-radius: 15px;
-    background-color: #dadada66;
+    flex-grow: 1;
+    margin-right: 10px;
   }
+
+  .commentInput {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+}
   
   .commentButtonFrame {
     width: calc(10vw); 
@@ -149,6 +153,9 @@
     outline: none;
     width: 100%;
     height: 100%;
+    padding: 10px 20px;
+    cursor: pointer;
+
   }
 
 .commentsFrame {
