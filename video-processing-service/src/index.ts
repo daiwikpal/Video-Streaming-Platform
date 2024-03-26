@@ -17,7 +17,7 @@ setUpDirectories();
 const app = express();
 app.use(express.json());
 
-const serviceAccount = require(""); // need path
+const serviceAccount = require('../config/serviceAccountKey.json');
 
 initializeApp({
   credential: cert(serviceAccount),
