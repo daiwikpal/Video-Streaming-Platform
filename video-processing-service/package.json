@@ -9,7 +9,8 @@
     "videoProcessing": "ts-node src/resolutionProcessing.ts",
     "imageExtraction": "ts-node src/extractingImages.ts",
     "build": "tsc",
-    "serve": "node dist/index.js"
+    "serve": "node dist/index.js",
+    "test": "ts-node src/test.ts"
   },
   "author": "",
   "license": "ISC",
