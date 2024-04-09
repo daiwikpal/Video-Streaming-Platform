@@ -26,7 +26,7 @@ export function Sidebar() {
         >
         <LargeSidebarSection>
             <LargeSidebarItem isActive Icon={Home} title="Home" url="/" />
-            <LargeSidebarItem Icon={BookCheckIcon} title="My Courses" url="/myCourses" />
+            <LargeSidebarItem Icon={BookCheckIcon} title="My Courses" url="/MyCourses" />
             <LargeSidebarItem Icon={Repeat} title="WatchPage" url="/watch" />
         </LargeSidebarSection>
 
