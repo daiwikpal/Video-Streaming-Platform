@@ -2,16 +2,19 @@ import styles from "./navbar.module.css";
 import Link from 'next/link';
 import { PageHeader} from "./layouts/PageHeader"
 import { Sidebar} from "./layouts/Sidebar"
+import { SidebarProvider } from "./contexts/SidebarContext";
 
 export default function Navbar(){
 
     return (
+        <SidebarProvider>
         <div className="max-h-screen flex flex-col">
             <PageHeader />
             <div className="grid grid-cols-[auto, 1fr] flex-grow-1 overflow-auto">
                 <Sidebar />
             </div>
         </div>
+        </SidebarProvider>
 
     )
 
