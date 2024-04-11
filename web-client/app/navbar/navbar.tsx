@@ -4,18 +4,19 @@ import { PageHeader} from "./layouts/PageHeader"
 import { Sidebar} from "./layouts/Sidebar"
 import { SidebarProvider } from "./contexts/SidebarContext";
 
-export default function Navbar(){
+export default function Navbar({children}: {children: React.ReactNode}){
 
     return (
         <SidebarProvider>
         <div className="max-h-screen flex flex-col">
             <PageHeader />
-            <div className="grid grid-cols-[auto, 1fr] flex-grow-1 overflow-auto">
+            <div className={styles.gridContainer}>
                 <Sidebar />
+                {children} 
+                {/* Render children here */}
             </div>
         </div>
         </SidebarProvider>
-
     )
 
     return(

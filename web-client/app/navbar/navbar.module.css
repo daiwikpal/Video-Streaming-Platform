@@ -21,3 +21,16 @@
 .navItem a:hover {
     color: #0070f3;
 }
+
+.content-area {
+    overflow-y: auto; /* If you want a scrollable content area */
+  }
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    flex-grow: 1;
+    overflow: auto;
+    /* background: red;  */
+}
+
