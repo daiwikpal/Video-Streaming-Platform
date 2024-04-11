@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.content-area {
+  overflow-y: auto; /* If you want a scrollable content area */
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
