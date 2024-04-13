@@ -1,0 +1,36 @@
+import React from 'react';
+import './style.css';
+
+export default function CoursePage() {
+  // Example data for video details
+  const videoDetails = [
+    { title: 'Introduction to AI', thumbnail: 'https://i.ytimg.com/vi/SSE4M0gcmvE/maxresdefault.jpg', description: 'Video 1 Description' },
+    { title: 'History of AI', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROWtrw_24b76Of1QzStt6bG8xapakrJhiUizQWBmme7g&s', description: 'Video 2 Description' },
+    { title: 'Graph search algorithms', thumbnail: '/assets/images/video2-placeholder.jpg', description: 'Video 2 Description' },
+    { title: 'AI 2', thumbnail: '/assets/images/video2-placeholder.jpg', description: 'Video 2 Description' },
+    { title: 'AI 3', thumbnail: '/assets/images/video2-placeholder.jpg', description: 'Video 2 Description' },
+    { title: 'AI 4', thumbnail: '/assets/images/video2-placeholder.jpg', description: 'Video 2 Description' },
+
+  ];
+
+  return (
+    <div className="courseRoot">
+      <div className="courseHeaderImage"></div> {/* Placeholder for course header image */}
+      <div className="courseInfo">
+        <h1>CS 3600 - Intro to AI</h1>
+        <p>Thad Starner</p>
+        <p>Lectures: 6 | Students: 300</p>
+      </div>
+      <div className="videoGrid">
+        {videoDetails.map((video, index) => (
+          <div key={index} className="videoCard">
+            <div className="videoThumbnail" style={{ backgroundImage: `url(${video.thumbnail})` }}>
+              {/* Placeholder for play icon, if needed */}
+            </div>
+            <div className="videoTitle">{video.title}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

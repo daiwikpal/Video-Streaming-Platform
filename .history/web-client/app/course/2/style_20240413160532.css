@@ -1,0 +1,91 @@
+.courseRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #F5F5F5, #FFFFFF); /* Gradient background */
+}
+
+.courseHeaderImage {
+  width: 100%;
+  height: 200px; /* Adjust as needed */
+  background-color: #E0E0E0; /* Placeholder color */
+  background-image: url('https://cdn.educba.com/academy/wp-content/uploads/2019/11/Application-of-Computer-Graphics-1.png'); /* Provided image URL */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.courseInfo {
+  width: 100%;
+  background-color: #B3A369; /* Georgia Tech Gold color */
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Create a responsive grid */
+  gap: 20px;
+  width: 100%;
+}
+
+.videoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.videoThumbnail {
+  width: 100%;
+  height: 140px; 
+  background-color: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
+  position: relative;
+}
+
+.videoThumbnail::before {
+  content: '▶'; 
+  font-size: 3rem; 
+  color: white; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+  pointer-events: none;
+}
+
+.videoThumbnail:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.videoTitle {
+  margin-top: 10px;
+  color: #000;
+  font-size: 1rem; 
+}
+
+.searchField {
+  margin-bottom: 10px; 
+}
+
+.searchField input {
+  padding: 8px; 
+  background-color: #F0F0F0; 
+}
+
+.searchField button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}

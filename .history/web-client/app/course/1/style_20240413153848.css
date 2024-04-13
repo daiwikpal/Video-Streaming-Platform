@@ -1,0 +1,70 @@
+.courseRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.courseHeaderImage {
+  width: 100%;
+  height: 200px; /* Adjust as needed */
+  background-color: #E0E0E0; /* Placeholder color */
+  background-image: url('https://cdn.sanity.io/images/tlr8oxjg/production/9a9f4a2035426b1f22ab20b7a36a5ffa26c5bc22-1456x816.png'); /* Provided image URL */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.courseInfo {
+  width: 100%;
+  background-color: #F5F5F5; /* Light grey color, you can adjust it */
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center; /* Center the text inside the course info */
+}
+
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Create a responsive grid */
+  gap: 20px;
+  width: 100%;
+}
+
+.videoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.videoThumbnail {
+  width: 100%;
+  height: 140px; /* Adjust the height as needed */
+  background-color: #000; /* Black color for video thumbnail */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
+  position: relative; /* To position the play icon */
+}
+
+.videoThumbnail::before {
+  content: '▶'; /* Simple text-based play icon */
+  font-size: 3rem; /* Large play icon */
+  color: white; /* White color for visibility */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 8px rgba(0,0,0,0.6); /* Shadow for better visibility */
+  pointer-events: none; /* Prevents the icon from blocking click events on the thumbnail */
+}
+
+
+.videoTitle {
+  margin-top: 10px;
+  color: #000;
+  font-size: 1rem; /* Adjust the font size as needed */
+}

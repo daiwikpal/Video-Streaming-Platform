@@ -1,0 +1,30 @@
+.courseRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #F5F5F5; /* Update background color for the course page */
+}
+
+.courseInfo {
+  width: 100%;
+  background-color: #B3A369; /* Georgia Tech Gold color */
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center; /* Center the text inside the course info */
+}
+
+.videoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF; /* Set background color for video cards */
+}
+
+.videoTitle {
+  margin-top: 10px;
+  color: #000000; /* Adjust text color for video titles */
+  font-size: 1rem; /* Adjust the font size as needed */
+}

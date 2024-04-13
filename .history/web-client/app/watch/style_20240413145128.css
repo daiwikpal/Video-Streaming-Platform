@@ -1,0 +1,173 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.header {
+  display: flex;
+  width: 82%;
+  justify-content: flex-start;
+  align-items: center;
+  height: 113px;
+}
+
+.logo {
+  flex-basis: 15%;
+  height: 100px;
+  background-image: url("/assets/images/GT_logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 3%;
+}
+
+.searchField {
+  flex-basis: 45%;
+  height: 45px;
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  border-radius: 15px;
+}
+
+.contentContainer {
+  display: flex;
+  width: 84%;
+  justify-content: space-between;
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 10px;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  align-items: center;
+  overflow: auto;
+  padding: 10px;
+}
+
+.moreVideos {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.videoThumbnail {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-image: url("/assets/images/video-placeholder.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  aspect-ratio: 16 / 9;
+}
+
+.mainVideo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-image: url("/assets/images/video-placeholder2.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.titleDescription {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.title {
+  width: 100%;
+  color: #000;
+  font-size: calc(1vw + 1vh);
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  height: 53px;
+}
+
+.description {
+  color: #000;
+  font-size: calc(0.8r: #000);
+  font-size: calc(0.8vw + 0.8vh);
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  height: 53px;
+}
+
+.addComment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+}
+
+.commentInputField {
+  width: 85%;
+  margin-right: 15px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: #dadada66;
+}
+
+.commentButtonFrame {
+  width: calc(10vw);
+  max-width: 133px;
+}
+
+.commentButton {
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: calc(0.6vw + 0.6vh);
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #a69a71;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  height: 100%;
+}
+
+.commentsFrame {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+}
+
+.comments {
+  color: #000;
+  font-size: calc(0.8vw + 0.8vh);
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  align-items: center;
+  height: 35px;
+  padding-bottom: 0px;
+}
+
+.commentArea {
+  width: 100%;
+  height: 150px;
+  border-radius: 15px;
+  background-color: #dadada66;
+}
