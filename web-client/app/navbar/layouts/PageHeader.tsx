@@ -23,7 +23,7 @@ export function PageHeader(){
                 <img src="/src/LogoWD.png" className="h-12"/>
             </a>
         </div>
-        <form className="md:flex hidden gap-4 flex-grow justify-center">
+        {/* <form className="md:flex hidden gap-4 flex-grow justify-center">
             <div className="flex flex-grow max-w-[600px]">
                 <input type="search" placeholder="Search"
                 className="rounded-1-full border border-secondary-border
@@ -37,7 +37,7 @@ export function PageHeader(){
             <Button type="button" size="icon" className="flex-shrink-0">
                 <Mic/>
             </Button>
-        </form>
+    </form> */}
         <div className="flex flex-shrink-0 md:gap-2">
             <Button size="icon" variant="ghost" className="md:hidden">
                 <Search />
