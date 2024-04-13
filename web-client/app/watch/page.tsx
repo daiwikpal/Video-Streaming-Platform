@@ -9,8 +9,8 @@ export default function Watch() {
   return (
     <div className="root">
       <div className="header">
-        <div className="logo"></div> {}
-        <div className="searchField"></div> {}
+        {/*<div className="logo"></div> {}*}
+        {/*<div className="searchField"></div> {}*/}
       </div>
 
       <div className="contentContainer">
