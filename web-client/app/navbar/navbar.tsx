@@ -28,7 +28,7 @@ export default function Navbar({children}: {children: React.ReactNode}){
                     </Link>
                 </li>
                 <li className={styles.navItem}>
-                    <Link href="/watch">
+                <Link href="/watch">
                         <p>Watch Page</p>
                     </Link>
                 </li>
