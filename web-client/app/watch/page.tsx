@@ -1,10 +1,46 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import "./style.css";
+import { app } from '../firebase/firebase';
+
+import { collection, doc, getFirestore, setDoc, serverTimestamp } from "firebase/firestore";
 
 export default function Watch() {
+  const [comment, setComment] = useState('');
   const videoThumbnails = new Array(7).fill(
     "/assets/images/video-placeholder.jpg"
   );
+  
+
+  const addComment = async () => {
+    if (comment.trim() === '') return;
+  
+    try {
+      // put video ID, user ID, and username, figure out how to get them
+      const uid = 'user-id';
+      const username = 'username';
+      const videoID = 'video-id';
+      const database = getFirestore(app);
+  
+      // Create a new reference with a generated id in the 'messages' collection
+      // and add the comment data to the new reference
+
+      console.log(comment); 
+      const newCommentDoc = doc(database, 'messages', 'CQbKTVHr0uCLck4JxM8N');
+      await setDoc(newCommentDoc, {
+        commentText: comment,
+        uid: uid,
+        username: username,
+        videoID: videoID,
+        timestamp: serverTimestamp()
+      });
+  
+      setComment('');
+    } catch (error) {
+      console.error("Error adding comment: ", error);
+    }
+  };
+
 
   return (
     <div className="root">
@@ -24,10 +60,19 @@ export default function Watch() {
           <div className="addComment">
             <div className="commentInputField">
               {/* Textarea for adding comments */}
-              <textarea className="commentInput" placeholder="Add a comment..."></textarea>
+              <textarea 
+                className="commentInput" 
+                placeholder="Add a comment..." 
+                value={comment}  
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setComment(value);
+                  console.log("button pressed");
+                }}>
+              </textarea>
             </div>
             <div className="commentButtonFrame">
-              <button className="commentButton">Comment</button>
+              <button className="commentButton" onClick={addComment}>Comment</button>
             </div>
           </div>
           <div className="commentsFrame">
