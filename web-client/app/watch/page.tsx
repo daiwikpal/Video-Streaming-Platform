@@ -4,6 +4,7 @@ import "./style.css";
 import { app } from '../firebase/firebase';
 import { useSearchParams } from "next/navigation";
 import { collection, doc, getFirestore, setDoc, serverTimestamp } from "firebase/firestore";
+import { setMessage } from "../firebase/functions";
 
 export default function Watch() {
   const [comment, setComment] = useState('');
@@ -20,22 +21,35 @@ export default function Watch() {
       const uid = 'user-id';
       const username = 'username';
       const videoID = 'video-id';
-      const database = getFirestore(app);
-  
-      // Create a new reference with a generated id in the 'messages' collection
-      // and add the comment data to the new reference
 
-      console.log(comment); 
-      const newCommentDoc = doc(database, 'messages', 'CQbKTVHr0uCLck4JxM8N');
-      await setDoc(newCommentDoc, {
+      await setMessage("CQbKTVHr0uCLck4JxM8N", {
         commentText: comment,
         uid: uid,
         username: username,
         videoID: videoID,
         timestamp: serverTimestamp()
-      });
+
+      })
+
+      // const database = getFirestore(app);
   
-      setComment('');
+      // Create a new reference with a generated id in the 'messages' collection
+      // and add the comment data to the new reference
+
+
+
+    //   console.log(comment); 
+    //   const newCommentDoc = doc(database, 'messages', 'CQbKTVHr0uCLck4JxM8N');
+    //   await setDoc(newCommentDoc, {
+    //     commentText: comment,
+    //     uid: uid,
+    //     username: username,
+    //     videoID: videoID,
+    //     timestamp: serverTimestamp()
+    //   });
+  
+    //   setComment('');
+    
     } catch (error) {
       console.error("Error adding comment: ", error);
     }

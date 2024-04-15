@@ -6,6 +6,8 @@ const functions = getFunctions(app);
 
 const generateUploadURL = httpsCallable(functions, 'generateUploadURL')
 const getVideosCallable = httpsCallable(functions, 'getVideos')
+const setMessagesCallable = httpsCallable(functions, 'setMessage')
+const getMessagesCallable = httpsCallable(functions, 'getMessages')
 
 export async function uploadVideo(file: File){
 
@@ -33,3 +35,25 @@ export async function getVideos(){
 
     return response.data; 
 }
+
+export async function getMessages(){
+    const response: any = await getMessagesCallable(); 
+
+    console.log(response.data)
+
+    return response.data; 
+}
+
+export async function setMessage(messageID: string, message: any ){
+    const data = {
+        messageID,
+        message
+    }
+    
+    setMessagesCallable(data).then((result) => {
+        console.log(result.data)
+    }).catch((error) => {
+        console.log(error)
+    }); 
+}
+
