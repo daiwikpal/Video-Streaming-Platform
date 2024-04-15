@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './uploadPage.module.css';
+import { uploadVideo } from '../firebase/functions';
+
 
 export default function Upload() {
     const [showVideos, setShowVideos] = useState(true);
@@ -105,13 +107,54 @@ export default function Upload() {
         </div>
     );
 
+    const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+
+// Function to trigger the file input when the Upload button is clicked
+    const handleUploadClick = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
+
+    // Function to handle file selection
+    const handleFileChange = (event: any) => {
+        const file = event.target.files?.item(0);
+        if (file.length > 0) {
+            // Process the selected file here (e.g., upload to a server)
+            console.log("Selected file:", file);
+        }
+
+        handleUpload(file); 
+    };
+
+    const handleUpload = async (file: File) => {
+        try {
+            const response = await uploadVideo(file); 
+            alert(`Sucessfully uploaded file!`); 
+        }catch(error){
+            alert(`Failed to upload file: ${error}`); 
+        }
+
+    }
+
+
+
     // Upload Button
     const uploadButton = showVideos && (
         <div className={styles['channel-header']}>
-            <div className={styles['upload-button-spacing']} onClick={() => setShowPopup(true)}>
+            <div className={styles['upload-button-spacing']} onClick={handleUploadClick}>
                 <button>Upload</button>
             </div>
-            {showPopup && (
+
+            <input
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: 'none' }}
+                    accept="video/*" // Accept only video files
+                    onChange={handleFileChange}
+            />
+            {/* {showPopup && (
                 <div className={styles['popup']}>
                     <div className={styles['popup-header']}>
                         <h2>Add Files</h2>
@@ -121,7 +164,7 @@ export default function Upload() {
                     </div>
                     <button>+</button>
                 </div>
-            )}
+            )} */}
         </div>
     );
 
