@@ -1,13 +1,14 @@
-import { initializeApp, cert } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
+import { credential } from "firebase-admin";
+import { initializeApp } from "firebase-admin/app";
+import { Firestore } from "firebase-admin/firestore";
 
-const serviceAccount = require('../config/serviceAccountKey.json');
+// const serviceAccount = require('../config/serviceAccountKey.json');
 
 initializeApp({
-  credential: cert(serviceAccount),
+  credential: credential.applicationDefault(),
 });
 
-const db = getFirestore();
+const db = new Firestore(); 
 
 const videoCollection = 'videos'
 

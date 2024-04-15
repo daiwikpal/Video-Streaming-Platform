@@ -55,7 +55,7 @@ app.post("/processVideos", async (req, res) => {
   if (!isVideoNew(videoId)){
     return res.status(400).send("Bad Request: Video already processing or processed"); 
   } else {
-    setVideo(videoId, {
+    await setVideo(videoId, {
       id: videoId, 
       uid: videoId.split("-")[0], 
       status: "processing"
@@ -68,6 +68,7 @@ app.post("/processVideos", async (req, res) => {
   // Convert the video
   try {
     await convertVideo(rawVideoName, processedVideoName);
+    
   } catch (err) {
     await deleteLocalRawVideo(rawVideoName);
     await deleteLocalProcessedVideo(processedVideoName);
@@ -78,8 +79,11 @@ app.post("/processVideos", async (req, res) => {
   }
 
   // Upload the processed video to GCS
-  const { publicURL, id } = await uploadProcessedVideoToGCS(processedVideoName);
-
+  await uploadProcessedVideoToGCS(processedVideoName);
+  await setVideo(videoId, {
+    filename: processedVideoName, 
+    status: "processed"
+  })
 
 
   // // log the video to database
