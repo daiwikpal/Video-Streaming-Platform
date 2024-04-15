@@ -15,14 +15,14 @@ interface Course {
 const courses: Course[] = [
     {
         id: 1,
-        image: 'course1.jpg',
+        image: 'https://news.gatech.edu/sites/default/files/hg_media/2024-27/AI%20Image.jpg',
         courseNumber: 'CS3600',
         courseName: 'Intro to AI',
         professorName: 'Dr. Thad Starner',
     },
     {
         id: 2,
-        image: 'course2.jpg',
+        image: 'https://static.javatpoint.com/definition/images/computer-graphics-definition2.png',
         courseNumber: 'CS3451',
         courseName: 'Computer Graphics',
         professorName: 'Prof. Bo Zhu',

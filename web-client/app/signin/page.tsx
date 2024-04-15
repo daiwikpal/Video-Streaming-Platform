@@ -72,8 +72,13 @@ export default function Signin(){
             alert("user successfully logged in")
             const user = userCredential.user;
             console.log('Signed in as', user.email);
+            <script type="text/javascript">
+                document.getElementById("signInButton").onclick = function () {
+                    location.href = "http://localhost:3000/myCourses"
+                };
+            </script>
             } catch (error) {
-                alert("user not logged in")
+                alert("Error signing in with email and password")
                 console.error('Error signing in with email and password');
             }
             console.log('Signing in with', email, password);
