@@ -9,21 +9,23 @@ import {
   deleteLocalRawVideo,
   deleteLocalProcessedVideo,
 } from "./storage";
+
 import { initializeApp, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
+import { isVideoNew, setVideo } from "./firestore";
 
 setUpDirectories();
 
 const app = express();
 app.use(express.json());
 
-const serviceAccount = require('../config/serviceAccountKey.json');
+// const serviceAccount = require('../config/serviceAccountKey.json');
 
-initializeApp({
-  credential: cert(serviceAccount),
-});
+// initializeApp({
+//   credential: cert(serviceAccount),
+// });
 
-const db = getFirestore();
+// const db = getFirestore();
 
 app.get("/status", (req, res) => {
   const port = process.env.PORT || 3000;
@@ -48,6 +50,17 @@ app.post("/processVideos", async (req, res) => {
 
   const rawVideoName = data.name;
   const processedVideoName = rawVideoName.replace(".mp4", "-processed.mp4");
+  const videoId = rawVideoName.split(".")[0]; 
+
+  if (!isVideoNew(videoId)){
+    return res.status(400).send("Bad Request: Video already processing or processed"); 
+  } else {
+    await setVideo(videoId, {
+      id: videoId, 
+      uid: videoId.split("-")[0], 
+      status: "processing"
+    })
+  }
 
   // Downlaod the raw video from GCS
   await downloadRawVideoFromGCS(rawVideoName);
@@ -55,6 +68,7 @@ app.post("/processVideos", async (req, res) => {
   // Convert the video
   try {
     await convertVideo(rawVideoName, processedVideoName);
+    
   } catch (err) {
     await deleteLocalRawVideo(rawVideoName);
     await deleteLocalProcessedVideo(processedVideoName);
@@ -65,17 +79,22 @@ app.post("/processVideos", async (req, res) => {
   }
 
   // Upload the processed video to GCS
-  const { publicURL, id } = await uploadProcessedVideoToGCS(processedVideoName);
+  await uploadProcessedVideoToGCS(processedVideoName);
+  await setVideo(videoId, {
+    filename: processedVideoName, 
+    status: "processed"
+  })
 
-  // log the video to database
-  if (id) {
-    await db.collection("videos").doc(id).set({
-      publicURL,
-      id,
-    });
-  } else {
-    console.log("Video ID is undefined.");
-  }
+
+  // // log the video to database
+  // if (id) {
+  //   await db.collection("videos").doc(id).set({
+  //     publicURL,
+  //     id,
+  //   });
+  // } else {
+  //   console.log("Video ID is undefined.");
+  // }
 
   // Delete the local files used to process the video
   await deleteLocalRawVideo(rawVideoName);
