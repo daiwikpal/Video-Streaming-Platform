@@ -2,17 +2,21 @@ import styles from "./navbar.module.css";
 import Link from 'next/link';
 import { PageHeader} from "./layouts/PageHeader"
 import { Sidebar} from "./layouts/Sidebar"
+import { SidebarProvider } from "./contexts/SidebarContext";
 
-export default function Navbar(){
+export default function Navbar({children}: {children: React.ReactNode}){
 
     return (
+        <SidebarProvider>
         <div className="max-h-screen flex flex-col">
             <PageHeader />
-            <div className="grid grid-cols-[auto, 1fr] flex-grow-1 overflow-auto">
+            <div className={styles.gridContainer}>
                 <Sidebar />
+                {children} 
+                {/* Render children here */}
             </div>
         </div>
-
+        </SidebarProvider>
     )
 
     return(
@@ -24,7 +28,7 @@ export default function Navbar(){
                     </Link>
                 </li>
                 <li className={styles.navItem}>
-                    <Link href="/watch">
+                <Link href="/watch">
                         <p>Watch Page</p>
                     </Link>
                 </li>

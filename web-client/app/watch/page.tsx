@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, use } from "react";
 import "./style.css";
 import { app } from '../firebase/firebase';
-
+import { useSearchParams } from "next/navigation";
 import { collection, doc, getFirestore, setDoc, serverTimestamp } from "firebase/firestore";
 
 export default function Watch() {
@@ -42,16 +42,21 @@ export default function Watch() {
   };
 
 
+  const videoSrc = useSearchParams().get('v'); 
+  const videoPrefix = 'https://storage.googleapis.com/video-streaming-platform-processed-videos/'
+
   return (
     <div className="root">
       <div className="header">
-        <div className="logo"></div> {}
-        <div className="searchField"></div> {}
+        {/*<div className="logo"></div> {}*}
+        {/*<div className="searchField"></div> {}*/}
       </div>
 
       <div className="contentContainer">
         <div className="leftContainer">
-          <div className="mainVideo"></div>
+          <div className="mainVideo">
+            <video className="mainVideo" controls src = {videoPrefix + videoSrc} />
+          </div>
           <div className="titleDescription">
             <div className="title">Title</div>
             <div className="description">Description</div>

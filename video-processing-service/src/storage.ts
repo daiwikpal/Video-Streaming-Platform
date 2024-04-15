@@ -92,6 +92,12 @@ export async function uploadProcessedVideoToGCS(videoName: string){
     
     await bucket.file(videoName).makePublic();
 
+    const [metadata] = await bucket.file(videoName).getMetadata();
+    const publicURL = `https://storage.googleapis.com/${processedVideoBucket}/${videoName}`;
+    const id = metadata.id;
+
+    return { publicURL, id };
+
 }
 
 
