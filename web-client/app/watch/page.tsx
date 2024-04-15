@@ -1,10 +1,15 @@
-import React from "react";
+"use client"; 
+import React, { use } from "react";
 import "./style.css";
+import { useSearchParams } from "next/navigation";
 
 export default function Watch() {
   const videoThumbnails = new Array(7).fill(
     "/assets/images/video-placeholder.jpg"
   );
+
+  const videoSrc = useSearchParams().get('v'); 
+  const videoPrefix = 'https://storage.googleapis.com/video-streaming-platform-processed-videos/'
 
   return (
     <div className="root">
@@ -15,7 +20,9 @@ export default function Watch() {
 
       <div className="contentContainer">
         <div className="leftContainer">
-          <div className="mainVideo"></div>
+          <div className="mainVideo">
+            <video className="mainVideo" controls src = {videoPrefix + videoSrc} />
+          </div>
           <div className="titleDescription">
             <div className="title">Title</div>
             <div className="description">Description</div>
